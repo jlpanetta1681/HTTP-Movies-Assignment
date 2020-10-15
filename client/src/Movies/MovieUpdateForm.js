@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
 const MovieUpdateForm = ({ movieList, setMovieList }) => {
 	const history = useHistory();
@@ -11,13 +11,13 @@ const MovieUpdateForm = ({ movieList, setMovieList }) => {
 		axios
 			.get(`http://localhost:5000/api/movies/${id}`)
 			.then((res) => {
-				//log to check
+				console.log(res);
 				setFormValues(res.data);
 			})
 			.catch((err) => {
 				console.log(err.response);
 			});
-	}, []);
+	});
 
 	const handleChange = (e) => {
 		e.preventDefault();
